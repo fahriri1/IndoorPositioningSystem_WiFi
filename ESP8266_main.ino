@@ -3,7 +3,6 @@
 #define D5 (14)
 #define D6 (12)
 #define D7 (13)
-#define D4 (2)
 
 EspSoftwareSerial::UART swSerial1;
 EspSoftwareSerial::UART swSerial2;
@@ -15,7 +14,7 @@ void setup() {
   Serial.begin(9600);
 
   swSerial1.begin(9600, EspSoftwareSerial::SWSERIAL_8N1, D6, D4);
-  swSerial2.begin(9600, EspSoftwareSerial::SWSERIAL_8N1, D7, D8);
+  swSerial2.begin(9600, EspSoftwareSerial::SWSERIAL_8N1, D7, D4);
   swSerial3.begin(9600, EspSoftwareSerial::SWSERIAL_8N1, D5, D4);
 }
 
@@ -24,23 +23,23 @@ void loop() {
 
   //Dapatkan koordinat Rssi 1
   if(swSerial1.available()){
-    buffer = swSerial1.readString();
+    buffer = swSerial1.readStringUntil('\n');
     Serial.println(buffer);
     Rssi[0] = buffer.toInt();
   }
 
   //Dapatkan koordinat Rssi 2
   if(swSerial2.available()){
-    buffer = swSerial2.readString();
+    buffer = swSerial2.readStringUntil('\n');
     Serial.println(buffer);
     Rssi[1] = buffer.toInt();
   }
 
   //Dapatkan koordinat Rssi 3
   if(swSerial3.available()){
-    buffer = swSerial3.readString();
+    buffer = swSerial3.readStringUntil('\n');
     Serial.println(buffer);
-    Rssi[1] = buffer.toInt();
+    Rssi[2] = buffer.toInt();
   }
 
   //Print koordinat
