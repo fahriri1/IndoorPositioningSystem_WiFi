@@ -58,3 +58,9 @@ PIN OUT
 - D7         TX1
 - D8         TX2
 - D9         TX3
+
+WiFi
+--
+- TP-Link_69C8 = 83690730 /n
+- TP-Link_4200 = 91822543 /n
+- TP-Link_6966 = 87506358 /n
